@@ -12,7 +12,7 @@ public class WLScheduleCellLineView: UIView {
     
     public var themeColor: UIColor = UIColor.colorWithHex(hexColor: 0x999998)
     public var arcColor: UIColor = UIColor.colorWithHex(hexColor: 0x999998)
-    public var isHead: Bool = true
+    public var isHead: Bool = false
     public var isTail: Bool = false
     public var lineWidht: CGFloat = 2.0
     public var arcRadius: CGFloat = 4.0
@@ -48,18 +48,17 @@ public class WLScheduleCellLineView: UIView {
         let arcPath: UIBezierPath = UIBezierPath.init()
         let pointY: CGFloat = (self.bounds.size.height - arcRadius * 2)/2
         let pointX: CGFloat = self.bounds.size.width / 2
-        if !isHead {
+        if isHead == false {
            linePath.move(to: CGPoint.init(x: pointX, y: 0.0))
            linePath.addLine(to: CGPoint.init(x: pointX, y: pointY))
         }
         arcPath.addArc(withCenter: CGPoint.init(x: pointX, y: pointY + arcRadius), radius: arcRadius, startAngle: calculate(with: -90.0), endAngle: calculate(with: 270.0), clockwise: true)
         arcPath.close()
-        
-        if !isTail {
+        if isTail == false {
             linePath.move(to: CGPoint.init(x: pointX, y: 0.0))
             linePath.addLine(to: CGPoint.init(x: pointX, y: self.bounds.size.height))
-            linePath.close()
         }
+        linePath.close()
         lineLayer.path = linePath.cgPath
         lineLayer.lineCap = kCALineCapRound
         lineLayer.lineWidth = lineWidht

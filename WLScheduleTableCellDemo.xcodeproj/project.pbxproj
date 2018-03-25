@@ -11,7 +11,7 @@
 		D061E21B2064F2E700DF8A0C /* WLScheduleCellHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2182064F2E700DF8A0C /* WLScheduleCellHeadView.swift */; };
 		D061E21C2064F2E700DF8A0C /* WLScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2192064F2E700DF8A0C /* WLScheduleTableViewCell.swift */; };
 		D061E2242064F3C400DF8A0C /* WLExtensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2232064F3C400DF8A0C /* WLExtensionColor.swift */; };
-		D061E22A2064F4AA00DF8A0C /* WLExtensionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2292064F4A900DF8A0C /* WLExtensionButton.swift */; };
+		D061E22F20660BB700DF8A0C /* WLExtensionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E22E20660BB700DF8A0C /* WLExtensionButton.swift */; };
 		D06E76942064EF7100A2376D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E76932064EF7100A2376D /* AppDelegate.swift */; };
 		D06E76962064EF7100A2376D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E76952064EF7100A2376D /* ViewController.swift */; };
 		D06E76992064EF7100A2376D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D06E76972064EF7100A2376D /* Main.storyboard */; };
@@ -24,7 +24,7 @@
 		D061E2182064F2E700DF8A0C /* WLScheduleCellHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLScheduleCellHeadView.swift; path = WLScheduleTableCell/Classes/WLScheduleCellHeadView.swift; sourceTree = SOURCE_ROOT; };
 		D061E2192064F2E700DF8A0C /* WLScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLScheduleTableViewCell.swift; path = WLScheduleTableCell/Classes/WLScheduleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		D061E2232064F3C400DF8A0C /* WLExtensionColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLExtensionColor.swift; path = WLScheduleTableCell/Classes/WLExtensionColor.swift; sourceTree = SOURCE_ROOT; };
-		D061E2292064F4A900DF8A0C /* WLExtensionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WLExtensionButton.swift; path = "/Users/luowanglin/Desktop/WLScheduleTableCell/New Group/WLExtensionButton.swift"; sourceTree = "<absolute>"; };
+		D061E22E20660BB700DF8A0C /* WLExtensionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLExtensionButton.swift; path = WLScheduleTableCell/Classes/WLExtensionButton.swift; sourceTree = SOURCE_ROOT; };
 		D06E76902064EF7100A2376D /* WLScheduleTableCellDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WLScheduleTableCellDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06E76932064EF7100A2376D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D06E76952064EF7100A2376D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		D061E2162064F2A300DF8A0C /* WLScheduleTableCell */ = {
 			isa = PBXGroup;
 			children = (
-				D061E2292064F4A900DF8A0C /* WLExtensionButton.swift */,
+				D061E22E20660BB700DF8A0C /* WLExtensionButton.swift */,
 				D061E2232064F3C400DF8A0C /* WLExtensionColor.swift */,
 				D061E2182064F2E700DF8A0C /* WLScheduleCellHeadView.swift */,
 				D061E2172064F2E700DF8A0C /* WLScheduleCellLineView.swift */,
@@ -164,7 +164,7 @@
 				D061E21B2064F2E700DF8A0C /* WLScheduleCellHeadView.swift in Sources */,
 				D06E76962064EF7100A2376D /* ViewController.swift in Sources */,
 				D061E21C2064F2E700DF8A0C /* WLScheduleTableViewCell.swift in Sources */,
-				D061E22A2064F4AA00DF8A0C /* WLExtensionButton.swift in Sources */,
+				D061E22F20660BB700DF8A0C /* WLExtensionButton.swift in Sources */,
 				D061E21A2064F2E700DF8A0C /* WLScheduleCellLineView.swift in Sources */,
 				D06E76942064EF7100A2376D /* AppDelegate.swift in Sources */,
 			);
