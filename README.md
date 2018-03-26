@@ -18,7 +18,7 @@ This component for custom UITableViewCell.
 
 ## Features
 
-- [x] event of Time Axi for UITableView
+- [x] Event of Time Axi for UITableView
 
 
 ## Requirements
