@@ -12,8 +12,8 @@ public class WLScheduleCellLineView: UIView {
     
     public var themeColor: UIColor = UIColor.colorWithHex(hexColor: 0x999998)
     public var arcColor: UIColor = UIColor.colorWithHex(hexColor: 0x999998)
-    public var isHead: Bool = false
-    public var isTail: Bool = false
+    public var isHead: Bool?
+    public var isTail: Bool?
     public var lineWidht: CGFloat = 2.0
     public var arcRadius: CGFloat = 4.0
     
@@ -31,6 +31,9 @@ public class WLScheduleCellLineView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /**
+     *Painting for your Image
+     ***/
     public func createImageWithColor(color: UIColor)->UIImage {
         UIGraphicsBeginImageContext(self.bounds.size)
         let context: CGContext = UIGraphicsGetCurrentContext()!
@@ -41,24 +44,31 @@ public class WLScheduleCellLineView: UIView {
         return image
     }
     
-    public func pathDraw() {
+    /**
+     *Execute draw path
+     ***/
+    public func drawPath() {
+        /***Clear all of sub layer***/
+        while self.layer.sublayers?.last != nil {
+            self.layer.sublayers?.last?.removeFromSuperlayer()
+        }
         let lineLayer: CAShapeLayer = CAShapeLayer.init()
         let linePath: UIBezierPath = UIBezierPath.init()
         let arcLayer: CAShapeLayer = CAShapeLayer.init()
         let arcPath: UIBezierPath = UIBezierPath.init()
         let pointY: CGFloat = (self.bounds.size.height - arcRadius * 2)/2
         let pointX: CGFloat = self.bounds.size.width / 2
-        if isHead == false {
+        if self.isHead == false {
            linePath.move(to: CGPoint.init(x: pointX, y: 0.0))
            linePath.addLine(to: CGPoint.init(x: pointX, y: pointY))
         }
         arcPath.addArc(withCenter: CGPoint.init(x: pointX, y: pointY + arcRadius), radius: arcRadius, startAngle: calculate(with: -90.0), endAngle: calculate(with: 270.0), clockwise: true)
         arcPath.close()
-        if isTail == false {
-            linePath.move(to: CGPoint.init(x: pointX, y: 0.0))
-            linePath.addLine(to: CGPoint.init(x: pointX, y: self.bounds.size.height))
+        if self.isTail == false {
+            linePath.move(to: CGPoint.init(x: pointX, y: pointY + arcRadius ))
+            linePath.addLine(to: CGPoint.init(x: pointX, y: self.bounds.size.height + 1.0))
+            linePath.close()
         }
-        linePath.close()
         lineLayer.path = linePath.cgPath
         lineLayer.lineCap = kCALineCapRound
         lineLayer.lineWidth = lineWidht
@@ -73,6 +83,9 @@ public class WLScheduleCellLineView: UIView {
         self.layer.addSublayer(arcLayer)
     }
     
+    /**
+     *Arc change to float
+     ***/
     private func calculate(with angle:CGFloat)->CGFloat {
        return (angle) / 180.0 * CGFloat.pi
     }

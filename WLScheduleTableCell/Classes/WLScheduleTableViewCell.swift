@@ -19,24 +19,24 @@ public protocol WLScheduleTableViewCellDelegate {
 public class WLScheduleTableViewCell: UITableViewCell {
 
     public var scheduleDelegate: WLScheduleTableViewCellDelegate?
+    public var isTimeLineBegin: Bool?
+    public var isTimeLineEnd: Bool?
     public var indexPath: IndexPath?
-    public var isFirstCell: Bool = false
-    public var isLastCell: Bool = false
     public var marginLeft: CGFloat = 0.0
     public var contentText: String = ""
     public var contentFontSize: CGFloat = 12.0
     public var contentTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    public var contentLable: UILabel?
+    private var contentLable: UILabel?
     
     public var subContentText: String = ""
     public var subContentFontSize: CGFloat = 12.0
     public var subContentTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    public var subContentLable: UILabel?
+    private var subContentLable: UILabel?
     
     public var timeText: String = ""
     public var timeFontSize: CGFloat = 12.0
     public var timeColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    public var timeLable: UILabel?
+    private var timeLable: UILabel?
     
     public var isShowBtn: Bool = false
     public var isShowPicture: Bool = false
@@ -48,13 +48,8 @@ public class WLScheduleTableViewCell: UITableViewCell {
     public var pictureBtn: UIButton?
     
     public var line: WLScheduleCellLineView?
-    
-    
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -64,7 +59,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.white
-        
+        self.clipsToBounds = false
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -72,6 +67,12 @@ public class WLScheduleTableViewCell: UITableViewCell {
     }
     
     public func beginForElementLayout() {
+        /***Clear all of subviews***/
+        while self.contentView.subviews.last != nil {
+            self.contentView.subviews.last?.removeFromSuperview()
+        }
+        /***Hide all of separator line***/
+        self.separatorInset = UIEdgeInsetsMake(0.0, UIScreen.main.bounds.width, 0.0, 0.0)
         let height: CGFloat = self.frame.size.height
         /***Line***/
         if line == nil {
@@ -80,10 +81,10 @@ public class WLScheduleTableViewCell: UITableViewCell {
             line?.lineWidht = 1.0
             line?.backgroundColor = UIColor.white
         }
-        line?.isHead = self.isFirstCell
-        line?.isTail = self.isLastCell
         line?.arcColor = self.circleColor
-        line?.pathDraw()
+        line?.isHead = self.isTimeLineBegin ?? false
+        line?.isTail = self.isTimeLineEnd ?? false
+        line?.drawPath()
         self.contentView.addSubview(line!)
         /***Time***/
         if timeLable == nil {
@@ -119,6 +120,8 @@ public class WLScheduleTableViewCell: UITableViewCell {
         subContentLable?.font = UIFont.systemFont(ofSize: self.subContentFontSize)
         subContentLable?.sizeToFit()
         self.contentView.addSubview(subContentLable!)
+        
     }
     
 }
+
