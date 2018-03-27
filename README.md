@@ -10,6 +10,7 @@
 
 
 ![Build Status](http://img.shields.io/travis/rs/SDWebImage/master.svg?style=flat)
+![Pod Version](http://img.shields.io/cocoapods/v/SDWebImage.svg?style=flat)
 ![Pod License](http://img.shields.io/cocoapods/l/SDWebImage.svg?style=flat)
 ![Dependency Status](https://www.versioneye.com/objective-c/sdwebimage/badge.svg?style=flat)
 
@@ -20,7 +21,6 @@ This component for custom UITableViewCell.
 
 - [x] Event of Time Axi for UITableView
 
-
 ## Requirements
 
 - iOS 8.0 or later
@@ -29,7 +29,6 @@ This component for custom UITableViewCell.
 ## Getting Started
 
 - Read this Readme doc
-
 
 ## Communication
 
@@ -42,14 +41,25 @@ This component for custom UITableViewCell.
 
 ## How To Use
 
+There are tow ways to use WLScheduleTableCell in your project:
+- using CocoaPods
+- by cloning the project into your repository
 
-- For details about how to use the library and clear examples
+### Installation with CocoaPods
 
+[CocoaPods](http://cocoapods.org/) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries in your projects. See the [Get Started](http://cocoapods.org/#get_started) section for more details.
 
-## Installation
+#### Podfile
+```
+platform :ios, '8.0'
+pod 'WLScheduleTableCell'
+```
 
-- By cloning the project into your repository , The libray at WLScheduleTableCell floder
-
+If you are using Swift, be sure to add `use_frameworks!` and set your target to iOS 8+:
+```
+platform :ios, '8.0'
+use_frameworks!
+```
 
 ## Author
 - [Wanglin Luo](https://luowanglin.github.io)
