@@ -19,10 +19,10 @@ public class WLScheduleCellHeadView: UIView {
     public var dayFontSize: CGFloat = 15.0
     var dayTextColor: UIColor = UIColor.white
     var dayLableBackgroundColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    var weekText: String?
+    public var weekText: String?
     var weekFontSize: CGFloat = 12.0
     var weekTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    var monthText: String?
+    public var monthText: String?
     var monthFontSize: CGFloat = 12.0
     var monthTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
     
