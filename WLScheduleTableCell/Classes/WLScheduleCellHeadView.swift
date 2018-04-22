@@ -49,7 +49,7 @@ public class WLScheduleCellHeadView: UIView {
         dayLable?.center = CGPoint.init(x: (dayLable?.center.x)!, y: self.frame.height / 2)
         self.addSubview(dayLable!)
         //week label
-        weekLable = UILabel.init(frame: CGRect.init(x: widht - 75.0, y: (dayLable?.frame.minY)!, width: 60.0, height: 30.0))
+        weekLable = UILabel.init(frame: CGRect.init(x: self.frame.width - 75.0, y: (dayLable?.frame.minY)!, width: 60.0, height: 30.0))
         weekLable?.font = UIFont.systemFont(ofSize: weekFontSize)
         weekLable?.textColor = weekTextColor
         weekLable?.text = weekText
