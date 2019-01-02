@@ -76,11 +76,10 @@ public class WLScheduleTableViewCell: UITableViewCell {
         let height: CGFloat = self.frame.size.height
         /***Line***/
         if line == nil {
-            line = WLScheduleCellLineView.init(frame: CGRect.init(x: marginLeft, y: 0.0, width: 20.0, height: height))
-            line?.arcRadius = 3.0
-            line?.lineWidht = 1.0
+            line = WLScheduleCellLineView.init()
             line?.backgroundColor = UIColor.white
         }
+        line?.frame = CGRect.init(x: marginLeft, y: 0.0, width: 20.0, height: height)
         line?.arcColor = self.circleColor
         line?.isHead = self.isTimeLineBegin ?? false
         line?.isTail = self.isTimeLineEnd ?? false
