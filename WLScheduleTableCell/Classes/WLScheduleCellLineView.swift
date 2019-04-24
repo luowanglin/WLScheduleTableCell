@@ -70,7 +70,7 @@ public class WLScheduleCellLineView: UIView {
             linePath.close()
         }
         lineLayer.path = linePath.cgPath
-        lineLayer.lineCap = kCALineCapRound
+        lineLayer.lineCap = CAShapeLayerLineCap.round
         lineLayer.lineWidth = lineWidht
         lineLayer.fillColor = themeColor.withAlphaComponent(0.8).cgColor
         lineLayer.strokeColor = themeColor.withAlphaComponent(0.8).cgColor

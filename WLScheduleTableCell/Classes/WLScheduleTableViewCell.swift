@@ -56,7 +56,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.white
         self.clipsToBounds = false
@@ -72,7 +72,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
             self.contentView.subviews.last?.removeFromSuperview()
         }
         /***Hide all of separator line***/
-        self.separatorInset = UIEdgeInsetsMake(0.0, UIScreen.main.bounds.width, 0.0, 0.0)
+        self.separatorInset = UIEdgeInsets.init(top: 0.0, left: UIScreen.main.bounds.width, bottom: 0.0, right: 0.0)
         let height: CGFloat = self.frame.size.height
         /***Line***/
         if line == nil {
@@ -97,7 +97,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
         if contentLable == nil {
             contentLable = UILabel.init()
         }
-        let contentSize: CGSize = contentText.size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: contentFontSize)])
+        let contentSize: CGSize = contentText.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: contentFontSize)])
         if isExpand {
             contentLable?.frame = CGRect.init(x: (timeLable?.frame.maxX)! - 15.0, y: (timeLable?.frame.minY)!, width: contentSize.width, height: height)
         }else{

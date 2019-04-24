@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        table_view = UITableView.init(frame: CGRect.init(x: 0.0, y: 20.0, width: self.view.frame.width, height: self.view.frame.height - 20.0), style: UITableViewStyle.plain)
+        table_view = UITableView.init(frame: CGRect.init(x: 0.0, y: 20.0, width: self.view.frame.width, height: self.view.frame.height - 20.0), style: UITableView.Style.plain)
         table_view?.register(WLScheduleTableViewCell.self, forCellReuseIdentifier: cellIdentifi)
         table_view?.register(WLScheduleTableViewCell.self, forCellReuseIdentifier: cellBeginIdentifi)
         table_view?.register(WLScheduleTableViewCell.self, forCellReuseIdentifier: cellEndIdentifi)
