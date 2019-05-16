@@ -15,7 +15,7 @@ extension UIButton {
         static var indexPath:IndexPath?
     }
     
-    var indexPath:IndexPath? {
+    public var indexPath:IndexPath? {
         get{
             return objc_getAssociatedObject(self, &AssociatedKeys.indexPath) as? IndexPath
         }
