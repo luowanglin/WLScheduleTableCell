@@ -9,13 +9,13 @@
 import UIKit
 
 
-extension UIButton {
+public extension UIButton {
     
     private struct AssociatedKeys {
         static var indexPath:IndexPath?
     }
     
-    public var indexPath:IndexPath? {
+    var indexPath:IndexPath? {
         get{
             return objc_getAssociatedObject(self, &AssociatedKeys.indexPath) as? IndexPath
         }
