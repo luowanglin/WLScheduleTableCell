@@ -52,7 +52,7 @@ There are tow ways to use WLScheduleTableCell in your project:
 #### Podfile
 ```
 platform :ios, '8.0'
-pod 'WLScheduleTableCell'
+pod 'WLScheduleTableCell', '0.0.6'
 ```
 
 If you are using Swift, be sure to add `use_frameworks!` and set your target to iOS 8+:
