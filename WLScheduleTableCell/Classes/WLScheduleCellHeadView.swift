@@ -8,23 +8,23 @@
 
 import UIKit
 
-public class WLScheduleCellHeadView: UIView {
+@objc public class WLScheduleCellHeadView: UIView {
     private let widht: CGFloat = UIScreen.main.bounds.width
-    public var dayLable: UILabel?
-    public var weekLable: UILabel?
-    public var monthLable: UILabel?
-    public var dayText: String?
-    public var space: CGFloat = 10.0
-    public var dayLableWidth: CGFloat = 34.0
-    public var dayFontSize: CGFloat = 15.0
-    var dayTextColor: UIColor = UIColor.white
-    var dayLableBackgroundColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    public var weekText: String?
-    var weekFontSize: CGFloat = 12.0
-    var weekTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
-    public var monthText: String?
-    var monthFontSize: CGFloat = 12.0
-    var monthTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
+    @objc public var dayLable: UILabel?
+    @objc public var weekLable: UILabel?
+    @objc public var monthLable: UILabel?
+    @objc public var dayText: String?
+    @objc public var monthText: String?
+    @objc public var weekText: String?
+    @objc public var space: CGFloat = 10.0
+    @objc public var dayLableWidth: CGFloat = 34.0
+    @objc public var dayFontSize: CGFloat = 15.0
+    @objc public var dayTextColor: UIColor = UIColor.white
+    @objc public var dayLableBackgroundColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
+    @objc public var weekFontSize: CGFloat = 12.0
+    @objc public var weekTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
+    @objc public var monthFontSize: CGFloat = 12.0
+    @objc public var monthTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,10 +33,10 @@ public class WLScheduleCellHeadView: UIView {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    public func beginLaoutForElement() {
+    @objc public func beginLaoutForElement() {
         //day label
         dayLable = UILabel.init(frame: CGRect.init(x: space, y: 0.0, width: dayLableWidth, height: dayLableWidth))
         dayLable?.text = dayText
@@ -68,5 +68,5 @@ public class WLScheduleCellHeadView: UIView {
         line.backgroundColor = UIColor.colorWithHex(hexColor: 0xF5F4FA)
         self.addSubview(line)
     }
-
+    
 }

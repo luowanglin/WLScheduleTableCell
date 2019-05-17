@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D05D4FF4228E410700F8C7A3 /* lwl_video.png in Resources */ = {isa = PBXBuildFile; fileRef = D05D4FF0228E410700F8C7A3 /* lwl_video.png */; };
+		D05D4FF5228E410700F8C7A3 /* lwl_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = D05D4FF1228E410700F8C7A3 /* lwl_picture.png */; };
+		D05D4FF6228E410700F8C7A3 /* e-up.png in Resources */ = {isa = PBXBuildFile; fileRef = D05D4FF2228E410700F8C7A3 /* e-up.png */; };
+		D05D4FF7228E410700F8C7A3 /* e-down.png in Resources */ = {isa = PBXBuildFile; fileRef = D05D4FF3228E410700F8C7A3 /* e-down.png */; };
 		D061E21A2064F2E700DF8A0C /* WLScheduleCellLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2172064F2E700DF8A0C /* WLScheduleCellLineView.swift */; };
 		D061E21B2064F2E700DF8A0C /* WLScheduleCellHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2182064F2E700DF8A0C /* WLScheduleCellHeadView.swift */; };
 		D061E21C2064F2E700DF8A0C /* WLScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D061E2192064F2E700DF8A0C /* WLScheduleTableViewCell.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D05D4FF0228E410700F8C7A3 /* lwl_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lwl_video.png; sourceTree = "<group>"; };
+		D05D4FF1228E410700F8C7A3 /* lwl_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lwl_picture.png; sourceTree = "<group>"; };
+		D05D4FF2228E410700F8C7A3 /* e-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e-up.png"; sourceTree = "<group>"; };
+		D05D4FF3228E410700F8C7A3 /* e-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e-down.png"; sourceTree = "<group>"; };
 		D061E2172064F2E700DF8A0C /* WLScheduleCellLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLScheduleCellLineView.swift; path = WLScheduleTableCell/Classes/WLScheduleCellLineView.swift; sourceTree = SOURCE_ROOT; };
 		D061E2182064F2E700DF8A0C /* WLScheduleCellHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLScheduleCellHeadView.swift; path = WLScheduleTableCell/Classes/WLScheduleCellHeadView.swift; sourceTree = SOURCE_ROOT; };
 		D061E2192064F2E700DF8A0C /* WLScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WLScheduleTableViewCell.swift; path = WLScheduleTableCell/Classes/WLScheduleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -45,9 +53,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D05D4FEF228E410700F8C7A3 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				D05D4FF0228E410700F8C7A3 /* lwl_video.png */,
+				D05D4FF1228E410700F8C7A3 /* lwl_picture.png */,
+				D05D4FF2228E410700F8C7A3 /* e-up.png */,
+				D05D4FF3228E410700F8C7A3 /* e-down.png */,
+			);
+			name = source;
+			path = WLScheduleTableCell/Classes/source;
+			sourceTree = SOURCE_ROOT;
+		};
 		D061E2162064F2A300DF8A0C /* WLScheduleTableCell */ = {
 			isa = PBXGroup;
 			children = (
+				D05D4FEF228E410700F8C7A3 /* source */,
 				D061E22E20660BB700DF8A0C /* WLExtensionButton.swift */,
 				D061E2232064F3C400DF8A0C /* WLExtensionColor.swift */,
 				D061E2182064F2E700DF8A0C /* WLScheduleCellHeadView.swift */,
@@ -149,7 +170,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06E769E2064EF7100A2376D /* LaunchScreen.storyboard in Resources */,
+				D05D4FF5228E410700F8C7A3 /* lwl_picture.png in Resources */,
+				D05D4FF6228E410700F8C7A3 /* e-up.png in Resources */,
+				D05D4FF4228E410700F8C7A3 /* lwl_video.png in Resources */,
 				D06E769B2064EF7100A2376D /* Assets.xcassets in Resources */,
+				D05D4FF7228E410700F8C7A3 /* e-down.png in Resources */,
 				D06E76992064EF7100A2376D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

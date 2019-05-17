@@ -40,33 +40,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        var cell: WLScheduleTableViewCell?
         if indexPath.row == 0 {
-            let cell: WLScheduleTableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellBeginIdentifi) as? WLScheduleTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: cellBeginIdentifi) as? WLScheduleTableViewCell
             cell?.contentText = "time line begin"
             cell?.timeText = "10:00:00"
-            cell?.marginLeft = 34.0
             cell?.isTimeLineBegin = true
-            cell?.beginForElementLayout()
-            return cell!
+            
         }else if indexPath.row == (tableView.numberOfRows(inSection: indexPath.section) - 1) {
-            let cell: WLScheduleTableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellEndIdentifi) as? WLScheduleTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: cellEndIdentifi) as? WLScheduleTableViewCell
             cell?.contentText = "time line end"
             cell?.timeText = "12:00:00"
-            cell?.marginLeft = 34.0
             cell?.isTimeLineEnd = true
-            cell?.beginForElementLayout()
-            return cell!
         }else{
-            let cell: WLScheduleTableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifi) as? WLScheduleTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifi) as? WLScheduleTableViewCell
             cell?.contentText = "time line body"
             cell?.timeText = "11:00:00"
-            cell?.marginLeft = 34.0
-            cell?.beginForElementLayout()
-            return cell!
         }
-        
-        
+        cell?.indexPath = indexPath
+        cell?.marginLeft = 34.0
+        cell?.expandBtnTitle = "收起"
+        cell?.isShowBtn = false
+        cell?.beginForElementLayout()
+        return cell ?? WLScheduleTableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -92,5 +88,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return headViewHeight
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
 }
