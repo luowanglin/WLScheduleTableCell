@@ -57,7 +57,7 @@ import UIKit
         weekLable?.center = CGPoint.init(x: (weekLable?.center.x)!, y: self.frame.height / 2)
         self.addSubview(weekLable!)
         //month label
-        monthLable = UILabel.init(frame: CGRect.init(x: (dayLable?.frame.maxX)! + 10.0, y: (dayLable?.frame.minY)! + 10.0, width: 30.0, height: 11.0))
+        monthLable = UILabel.init(frame: CGRect.init(x: (dayLable?.frame.maxX)! + 10.0, y: (dayLable?.frame.minY)! + 10.0, width: 60.0, height: 11.0))
         monthLable?.text = monthText
         monthLable?.font = UIFont.systemFont(ofSize: monthFontSize)
         monthLable?.center = CGPoint.init(x: (monthLable?.center.x)!, y: (dayLable?.center.y)!)
