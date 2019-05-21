@@ -139,7 +139,6 @@ public class WLScheduleTableViewCell: UITableViewCell {
         expandBtn?.setImage(UIImage.init(named: expandBtnImage), for: UIControl.State.normal)
         expandBtn?.titleLabel?.font = UIFont.systemFont(ofSize: expandBtnTitleFontSize)
         expandBtn?.setTitleColor(subContentTextColor, for: UIControl.State.normal)
-        expandBtn?.isEnabled = false
         expandBtn?.addTarget(self, action: #selector(expandAction(sender:)), for: UIControl.Event.touchUpInside)
         assert(indexPath != nil, "Set property of indexPath,Please!")
         expandBtn?.indexPath = indexPath
@@ -165,7 +164,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
         }else{
             videoBtn?.isHidden = true
         }
-      
+        
         ///Pictrue Btn
         if pictureBtn == nil {
             pictureBtn = UIButton.init(type: UIButton.ButtonType.custom)
@@ -196,7 +195,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
             "videoBtn":videoBtn,
             "pictrueBtn":pictureBtn]
         var allConstraints: [NSLayoutConstraint] = []
-  
+        
         let iconVerticalConstraints = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|-0-[line]-0-|",
             metrics: nil,
