@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WLScheduleTableCell"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   swift_versions = '5.0'
   s.summary      = "Event of Time Axi for UITableView."
   s.description  = "This component for custom UITableViewCell." 
