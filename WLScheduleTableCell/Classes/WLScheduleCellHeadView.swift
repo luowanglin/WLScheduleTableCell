@@ -17,14 +17,19 @@ import UIKit
     @objc public var monthText: String?
     @objc public var weekText: String?
     @objc public var space: CGFloat = 10.0
-    @objc public var dayLableWidth: CGFloat = 34.0
+    @objc public var dayLableWidth: CGFloat = 40.0
     @objc public var dayFontSize: CGFloat = 15.0
     @objc public var dayTextColor: UIColor = UIColor.white
     @objc public var dayLableBackgroundColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
     @objc public var weekFontSize: CGFloat = 12.0
+    @objc public var weekLableWidht: CGFloat = 60.0
     @objc public var weekTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
     @objc public var monthFontSize: CGFloat = 12.0
+    @objc public var monthLableWidht: CGFloat = 60.0
     @objc public var monthTextColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
+    
+    fileprivate var line: UIView?
+    @objc public var underLineColor: UIColor = UIColor.colorWithHex(hexColor: 0xF5F4FA)
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,35 +43,92 @@ import UIKit
     
     @objc public func commit() {
         //day label
-        dayLable = UILabel.init(frame: CGRect.init(x: space, y: 0.0, width: dayLableWidth, height: dayLableWidth))
+        if dayLable == nil {
+            dayLable = UILabel.init()
+        }
         dayLable?.text = dayText
         dayLable?.font = UIFont.systemFont(ofSize: dayFontSize)
         dayLable?.textColor = dayTextColor
         dayLable?.textAlignment = .center
         dayLable?.backgroundColor = dayLableBackgroundColor
-        dayLable?.layer.cornerRadius = (dayLable?.frame.width)! / 2
+        dayLable?.layer.cornerRadius = dayLableWidth / 2
         dayLable?.layer.masksToBounds = true
-        dayLable?.center = CGPoint.init(x: (dayLable?.center.x)!, y: self.frame.height / 2)
+        dayLable?.numberOfLines = 0
+        dayLable?.sizeToFit()
+        dayLable?.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(dayLable!)
         //week label
-        weekLable = UILabel.init(frame: CGRect.init(x: self.frame.width - 75.0, y: (dayLable?.frame.minY)!, width: 60.0, height: 30.0))
+        if weekLable == nil {
+            weekLable = UILabel.init()
+        }
         weekLable?.font = UIFont.systemFont(ofSize: weekFontSize)
         weekLable?.textColor = weekTextColor
         weekLable?.text = weekText
         weekLable?.textAlignment = .right
-        weekLable?.center = CGPoint.init(x: (weekLable?.center.x)!, y: self.frame.height / 2)
+        weekLable?.numberOfLines = 0
+        weekLable?.sizeToFit()
+        weekLable?.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(weekLable!)
         //month label
-        monthLable = UILabel.init(frame: CGRect.init(x: (dayLable?.frame.maxX)! + 10.0, y: (dayLable?.frame.minY)! + 10.0, width: 60.0, height: 11.0))
+        if monthLable == nil {
+            monthLable = UILabel.init()
+        }
         monthLable?.text = monthText
         monthLable?.font = UIFont.systemFont(ofSize: monthFontSize)
-        monthLable?.center = CGPoint.init(x: (monthLable?.center.x)!, y: (dayLable?.center.y)!)
         monthLable?.textColor = monthTextColor
+        monthLable?.numberOfLines = 0
+        monthLable?.sizeToFit()
+        monthLable?.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(monthLable!)
         //line
-        let line: UIView = UIView.init(frame: CGRect.init(x: (monthLable?.frame.minX)!, y: (monthLable?.frame.maxY)! + 10.0, width: widht-space-dayLableWidth-20.0, height: 1))
-        line.backgroundColor = UIColor.colorWithHex(hexColor: 0xF5F4FA)
-        self.addSubview(line)
+        if line == nil {
+            line = UIView.init()
+        }
+        line?.backgroundColor = underLineColor
+        line?.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(line!)
+        ///add constraint...
+        self.layoutConstraint()
+    }
+    
+    ///Add constraint......
+    fileprivate func layoutConstraint() {
+        let viewsDictionary = [
+            "line":line,
+            "dayLable":dayLable,
+            "weekLable":weekLable,
+            "monthLable":monthLable]
+        var allConstraints: [NSLayoutConstraint] = []
+        
+        let iconVerticalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[dayLable]-0-[line(1)]-0-|",
+            metrics: nil,
+            views: viewsDictionary as [String : Any])
+        allConstraints += iconVerticalConstraints
+        
+        let contentLableVerticalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-[weekLable]-[line(1)]-|",
+            metrics: nil,
+            views: viewsDictionary as [String : Any])
+        allConstraints += contentLableVerticalConstraints
+
+        let subContentLableVerticalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-[monthLable]-[line(1)]-|",
+            metrics: nil,
+            views: viewsDictionary as [String : Any])
+        allConstraints += subContentLableVerticalConstraints
+        
+        let rowHorizontalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-\(space)-[dayLable(\(dayLableWidth))]-[monthLable(\(monthLableWidht))]-[weekLable]-10-|",
+            options:[],
+            metrics: nil,
+            views: viewsDictionary as [String : Any])
+        allConstraints += rowHorizontalConstraints
+        
+        let rowHorizontalLineConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[dayLable]-\(space)-[line]-\(space)-|", options: [], metrics: nil, views: viewsDictionary as [String : Any])
+        allConstraints += rowHorizontalLineConstraints
+        
+        self.addConstraints(allConstraints)
     }
     
 }
