@@ -36,7 +36,7 @@ import UIKit
         super.init(coder: aDecoder)
     }
     
-    @objc public func beginLaoutForElement() {
+    @objc public func commit() {
         //day label
         dayLable = UILabel.init(frame: CGRect.init(x: space, y: 0.0, width: dayLableWidth, height: dayLableWidth))
         dayLable?.text = dayText

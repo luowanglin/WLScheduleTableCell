@@ -37,20 +37,11 @@ public class WLScheduleTableViewCell: UITableViewCell {
     @objc public var timeColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
     private var timeLable: UILabel?
     
-    @objc public var isShowBtn: Bool = false {
-        didSet{
-            guard expandBtn != nil else {return}
-            if isShowBtn == true {
-//                self.contentView.addSubview(expandBtn!)
-            }else{
-//                expandBtn?.removeFromSuperview()
-            }
-        }
-    }
-    
+    @objc public var isShowExpandBtn: Bool = false
     @objc public var isShowPicture: Bool = false
     @objc public var isShowVideo: Bool = false
     @objc public var isExpand: Bool = false
+    
     @objc public var circleColor: UIColor = UIColor.colorWithHex(hexColor: 0x565B78)
     @objc public var expandBtnImage: String = "e-down.png"
     @objc public var expandBtn: UIButton?
@@ -60,6 +51,7 @@ public class WLScheduleTableViewCell: UITableViewCell {
     @objc public var pictureBtn: UIButton?
     @objc public var expandBtnTitle: String = "展开"
     @objc public var expandBtnTitleFontSize: CGFloat = 12.0
+    @objc public var contentHeight: CGFloat = 44.0
     
     @objc public var line: WLScheduleCellLineView?
     
@@ -80,19 +72,19 @@ public class WLScheduleTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    @objc public func beginForElementLayout() {
+    @objc public func commit() {
         /***Clear all of subviews***/
         while self.contentView.subviews.last != nil {
             self.contentView.subviews.last?.removeFromSuperview()
         }
         /***Hide all of separator line***/
         self.separatorInset = UIEdgeInsets.init(top: 0.0, left: UIScreen.main.bounds.width, bottom: 0.0, right: 0.0)
-        
         /***Line***/
         if line == nil {
             line = WLScheduleCellLineView.init()
             line?.backgroundColor = UIColor.white
         }
+        line?.frame = CGRect.init(x: marginLeft, y: 0.0, width: 20.0, height: contentHeight)
         line?.translatesAutoresizingMaskIntoConstraints = false
         line?.arcColor = self.circleColor
         line?.isHead = self.isTimeLineBegin
@@ -152,6 +144,11 @@ public class WLScheduleTableViewCell: UITableViewCell {
         assert(indexPath != nil, "Set property of indexPath,Please!")
         expandBtn?.indexPath = indexPath
         self.contentView.addSubview(expandBtn!)
+        if isShowExpandBtn {
+            expandBtn?.isHidden = false
+        }else{
+            expandBtn?.isHidden = true
+        }
         
         ///Video Btn
         if videoBtn == nil {
@@ -163,6 +160,11 @@ public class WLScheduleTableViewCell: UITableViewCell {
         videoBtn?.addTarget(self, action: #selector(videoAction(sender:)), for: UIControl.Event.touchUpInside)
         self.contentView.addSubview(videoBtn!)
         videoBtn?.indexPath = indexPath
+        if isShowVideo {
+            videoBtn?.isHidden = false
+        }else{
+            videoBtn?.isHidden = true
+        }
       
         ///Pictrue Btn
         if pictureBtn == nil {
@@ -174,12 +176,17 @@ public class WLScheduleTableViewCell: UITableViewCell {
         pictureBtn?.addTarget(self, action: #selector(pictureAction(sender:)), for: UIControl.Event.touchUpInside)
         pictureBtn?.indexPath = indexPath
         self.contentView.addSubview(pictureBtn!)
+        if isShowPicture {
+            pictureBtn?.isHidden = false
+        }else{
+            pictureBtn?.isHidden = true
+        }
         
-        ///Autolayout.....
-        autoLayout()
+        layoutConstraint()
     }
     
-    fileprivate func autoLayout() {
+    ///Add constraint......
+    fileprivate func layoutConstraint() {
         let viewsDictionary = [
             "line":line,
             "timeLable":timeLable,

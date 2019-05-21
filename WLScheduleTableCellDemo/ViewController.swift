@@ -60,8 +60,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.indexPath = indexPath
         cell?.marginLeft = 34.0
         cell?.expandBtnTitle = "收起"
-        cell?.isShowBtn = false
-        cell?.beginForElementLayout()
+        cell?.isShowExpandBtn = false
+        cell?.isShowPicture = false
+        cell?.isShowVideo = false
+        cell?.contentHeight = 60.0
+        cell?.commit()
         return cell ?? WLScheduleTableViewCell()
     }
     
@@ -70,7 +73,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         headView.dayText = "20"
         headView.monthText = "3月"
         headView.weekText = "星期日"
-        headView.beginLaoutForElement()
+        headView.commit()
         return headView
     }
     
